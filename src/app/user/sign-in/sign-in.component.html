@@ -1,0 +1,31 @@
+
+<mat-card-content>
+  <form #loginForm="ngForm">
+    <div fxLayout="column">
+      <!--/ Auth Form Fields - Begin-->
+      <div class="form-components auth-input-field">
+        <mat-form-field>
+          <input #email ngModel matInput placeholder="E-mail" required name="email" type="email">
+        </mat-form-field>
+      </div>
+      <div class="form-components auth-input-field">
+        <mat-form-field>
+          <input #password ngModel matInput placeholder="Password" required name="password" type="password">
+        </mat-form-field>
+      </div>
+      <div class="form-components auth-input-field">
+        <mat-checkbox #rememberme name="rememberme">
+          Remember me!
+        </mat-checkbox>
+      </div>
+
+      <button mat-raised-button color="accent" type="submit" [disabled]="!loginForm.valid">Login</button>
+      <!--/ Auth Form Fields - End-->
+    </div>
+  </form>
+</mat-card-content>
+<mat-card-footer class="auth-actions">
+  <div class="text-center ">
+    <p>Not registred? <a routerLink='/signup'>Create an account</a></p>
+  </div>
+</mat-card-footer>

@@ -1,0 +1,29 @@
+<mat-card-content>
+  <form #SignUpForm="ngForm">
+    <div fxLayout="column">
+      <!--/ Auth Form Fields - Begin-->
+      <div class="form-components auth-input-field">
+        <mat-form-field>
+          <input #email ngModel matInput name="email" placeholder="E-mail" type="email" required>
+        </mat-form-field>
+      </div>
+      <div class="form-components auth-input-field">
+        <mat-form-field>
+          <input #password ngModel matInput name="password" placeholder="Password" type="password" required>
+        </mat-form-field>
+      </div>
+      <div class="form-components auth-input-field">
+        <mat-form-field>
+          <input #confirm_password ngModel matInput name="confirm_password" placeholder="Confirm Password" type="password" required>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="accent" type="submit" [disabled]="!SignUpForm.valid">Sign Up</button>
+      <!--/ Auth Form Fields - End-->
+    </div>
+  </form>
+</mat-card-content>
+<mat-card-footer class="auth-actions">
+  <div class="text-center ">
+    <p>Already have Account? <a routerLink='/login'>Sign In</a></p>
+  </div>
+</mat-card-footer>
