@@ -3,7 +3,7 @@
     <div class="auth-wrapper">
       <mat-card>
         <mat-card-content>
-          <form>
+          <form (ngSubmit)="onSubmit()">
             <div class="text-center">
               <p>Sign in with your account.</p>
             </div>
@@ -11,15 +11,15 @@
               <!--/ Auth Form Fields - Begin-->
               <div class="auth-input-field">
                 <mat-form-field>
-                  <input matInput placeholder="E-mail">
+                  <input matInput placeholder="E-mail" required type="email" value="admin@kods.lv">
                 </mat-form-field>
               </div>
               <div class="auth-input-field">
                 <mat-form-field>
-                  <input matInput placeholder="Password">
+                  <input matInput placeholder="Password" required type="password" value="qwerty">
                 </mat-form-field>
               </div>
-              <button mat-raised-button color="accent">Login</button>
+              <button mat-raised-button color="accent" type="submit" (click)="onLoginClick()">Login</button>
               <!--/ Auth Form Fields - End-->
             </div>
           </form>

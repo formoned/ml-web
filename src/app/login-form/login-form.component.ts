@@ -1,4 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-login-form',
@@ -7,10 +8,22 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 })
 export class LoginFormComponent implements OnInit {
 
+  myform: FormGroup;
+
 
   constructor() { }
 
   ngOnInit() {
+
   }
 
+  onSubmit() {
+    if (this.myform.valid) {
+      console.log("Form Submitted!");
+    }
+  }
+
+  onLoginClick() {
+    // alert('kek');
+  }
 }
