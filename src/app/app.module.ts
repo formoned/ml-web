@@ -8,6 +8,10 @@ import { MaterialModule } from './material.module';
 /* Angular Flex-Layout Module */
 import { FlexLayoutModule } from "@angular/flex-layout";
 
+import { UserService} from "./shared/user.service";
+import { HttpClientModule } from "@angular/common/http";
+import { HttpModule  } from "@angular/http";
+
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app-routing';
 import { LoginFormComponent } from './login-form/login-form.component';
@@ -15,7 +19,8 @@ import { UserComponent } from './user/user.component';
 import { HomeComponent } from './home/home.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
-import { SharedComponent } from './user/shared/shared.component';
+
+
 
 
 @NgModule({
@@ -25,17 +30,18 @@ import { SharedComponent } from './user/shared/shared.component';
     UserComponent,
     HomeComponent,
     SignInComponent,
-    SignUpComponent,
-    SharedComponent
+    SignUpComponent
   ],
   imports: [
     MaterialModule,
+    HttpClientModule,
+    HttpModule,
     BrowserAnimationsModule,
     BrowserModule,
     FlexLayoutModule,
     RouterModule.forRoot(AppRoutes)
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

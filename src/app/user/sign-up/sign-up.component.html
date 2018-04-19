@@ -1,23 +1,26 @@
 <mat-card-content>
-  <form #SignUpForm="ngForm">
+  <form #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
     <div fxLayout="column">
       <!--/ Auth Form Fields - Begin-->
       <div class="form-components auth-input-field">
         <mat-form-field>
-          <input #email ngModel matInput name="email" placeholder="E-mail" type="email" required>
+          <input matInput [(ngModel)]="user.email"  #email="ngModel" name="email" placeholder="E-mail" type="email" required>
+          <mat-error>
+asd
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="form-components auth-input-field">
         <mat-form-field>
-          <input #password ngModel matInput name="password" placeholder="Password" type="password" required>
+          <input matInput [(ngModel)]="user.password" #password="ngModel" name="password" placeholder="Password" type="password" required>
         </mat-form-field>
       </div>
       <div class="form-components auth-input-field">
         <mat-form-field>
-          <input #confirm_password ngModel matInput name="confirm_password" placeholder="Confirm Password" type="password" required>
+          <input matInput [(ngModel)]="user.password_confirmation" #password_confirmation="ngModel" name="password_confirmation" placeholder="Confirm Password" type="password" required>
         </mat-form-field>
       </div>
-      <button mat-raised-button color="accent" type="submit" [disabled]="!SignUpForm.valid">Sign Up</button>
+      <button mat-raised-button color="accent" type="submit" [disabled]="!userRegistrationForm.valid">Sign Up</button>
       <!--/ Auth Form Fields - End-->
     </div>
   </form>
