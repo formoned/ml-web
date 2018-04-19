@@ -3,7 +3,7 @@ import { Http, Headers, Response } from '@angular/http';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
-import { User } from './user.model';
+import {LoginForm, User} from './user.model';
 
 @Injectable()
 export class UserService {
@@ -27,13 +27,17 @@ export class UserService {
     return this.http.post(this.rootUrl + '/api/register', body,{headers : reqHeader});
   }
 
-  // userAuthentication(userName, password) {
-  //
-  //   var data = "username=" + userName + "&password=" + password + "&grant_type=password";
-  //
-  //   var reqHeader = new Headers({ 'Content-Type': 'application/x-www-urlencoded','No-Auth':'True' });
-  //
-  //   return this.http.post(this.rootUrl + '/token', data, {headers : reqHeader });
-  // }
+  userAuthentication(user: LoginForm) {
+
+    const body: LoginForm = {
+      email:                  user.email,
+      password:               user.password
+    }
+
+    var reqHeader = new Headers( {'X-Requested-With':'XMLHttpRequest' });
+    // var reqHeader = new Headers({ 'Content-Type': 'application/x-www-urlencoded','No-Auth':'True' });
+
+    return this.http.post(this.rootUrl + '/api/login', body, {headers : reqHeader });
+  }
 
 }

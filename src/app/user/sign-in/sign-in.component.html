@@ -1,16 +1,16 @@
 
 <mat-card-content>
-  <form #loginForm="ngForm">
+  <form #loginForm="ngForm" (ngSubmit)="OnSubmit(loginForm)">
     <div fxLayout="column">
       <!--/ Auth Form Fields - Begin-->
       <div class="form-components auth-input-field">
         <mat-form-field>
-          <input #email ngModel matInput placeholder="E-mail" required name="email" type="email">
+          <input matInput [(ngModel)]="user.email"  #email="ngModel" name="email" placeholder="E-mail" type="email" required>
         </mat-form-field>
       </div>
       <div class="form-components auth-input-field">
         <mat-form-field>
-          <input #password ngModel matInput placeholder="Password" required name="password" type="password">
+          <input matInput [(ngModel)]="user.password" #password="ngModel" name="password" placeholder="Password" type="password" required>
         </mat-form-field>
       </div>
       <div class="form-components auth-input-field">
