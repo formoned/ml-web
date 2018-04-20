@@ -3,12 +3,15 @@ import { Http, Headers, Response } from '@angular/http';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
-import {LoginForm, User} from './user.model';
+import {LoginForm, LoginOAuthForm, User} from './user.model';
 
 @Injectable()
 export class UserService {
 
   readonly rootUrl = 'http://bachelor-server.kods.lv';
+  readonly clientId = '2';
+  readonly clientSecret = '1qMmaxtVnN4q1ZxvkGTZSTDLxWKxHJX5POlU5jGk';
+  readonly grantType = 'password';
 
   constructor(private http: Http) { }
   // constructor(private http: HttpClient) { }
@@ -24,20 +27,24 @@ export class UserService {
     // var reqHeader = new HttpHeaders({'No-Auth':'True'});
     var reqHeader = new Headers({'X-Requested-With':'XMLHttpRequest'});
 
-    return this.http.post(this.rootUrl + '/api/register', body,{headers : reqHeader});
+
+    return this.http.post(this.rootUrl + '/api/auth/register ', body,{headers : reqHeader});
   }
 
   userAuthentication(user: LoginForm) {
 
-    const body: LoginForm = {
-      email:                  user.email,
-      password:               user.password
+    const body: LoginOAuthForm = {
+      grant_type: this.grantType,
+      username: user.email,
+      password: user.password,
+      client_id: this.clientId,
+      client_secret: this.clientSecret
     }
 
     var reqHeader = new Headers( {'X-Requested-With':'XMLHttpRequest' });
     // var reqHeader = new Headers({ 'Content-Type': 'application/x-www-urlencoded','No-Auth':'True' });
 
-    return this.http.post(this.rootUrl + '/api/login', body, {headers : reqHeader });
+    return this.http.post(this.rootUrl + '/oauth/token', body, {headers : reqHeader });
   }
 
   getUserClaims(){

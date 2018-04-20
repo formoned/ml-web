@@ -35,7 +35,9 @@ export class SignInComponent implements OnInit {
     this.userService.userAuthentication(form.value)
     .subscribe((data: any) => {
       // console.log(data.json().data.token);
-      localStorage.setItem('userToken', data.json().data.token);
+      localStorage.setItem('token_type', data.json().data.token_type);
+      localStorage.setItem('access_token', data.json().data.access_token);
+      localStorage.setItem('refresh_token', data.json().data.refresh_token);
       this.router.navigate(['/home']);
     },
     (err: HttpErrorResponse) => {
