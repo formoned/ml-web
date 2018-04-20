@@ -40,4 +40,8 @@ export class UserService {
     return this.http.post(this.rootUrl + '/api/login', body, {headers : reqHeader });
   }
 
+  getUserClaims(){
+    return  this.http.get(this.rootUrl+'/api/GetUserClaims');
+  }
+
 }

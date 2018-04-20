@@ -9,7 +9,7 @@ import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { UserService} from "./shared/user.service";
-import { HttpClientModule } from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { HttpModule  } from "@angular/http";
 
 import { AppComponent } from './app.component';
@@ -19,6 +19,8 @@ import { UserComponent } from './user/user.component';
 import { HomeComponent } from './home/home.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
+import {AuthGuard} from "./auth/auth.guard";
+import {AuthInterceptor} from "./auth/auth.interceptor";
 
 
 
@@ -41,7 +43,12 @@ import { SignUpComponent } from './user/sign-up/sign-up.component';
     FlexLayoutModule,
     RouterModule.forRoot(AppRoutes)
   ],
-  providers: [UserService],
+  providers: [UserService, AuthGuard,
+  {
+    provide : HTTP_INTERCEPTORS,
+    useClass : AuthInterceptor,
+    multi : true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
