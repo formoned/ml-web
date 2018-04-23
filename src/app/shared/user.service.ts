@@ -38,11 +38,15 @@ export class UserService {
       username: user.email,
       password: user.password,
       client_id: this.clientId,
-      client_secret: this.clientSecret
+      client_secret: this.clientSecret,
+      scope: ""
     }
 
-    var reqHeader = new Headers( {'X-Requested-With':'XMLHttpRequest' });
-    // var reqHeader = new Headers({ 'Content-Type': 'application/x-www-urlencoded','No-Auth':'True' });
+
+    var reqHeader = new Headers();
+
+    reqHeader.append('Accept', 'application/json');
+    reqHeader.append('Content-Type', 'application/json');
 
     return this.http.post(this.rootUrl + '/oauth/token', body, {headers : reqHeader });
   }

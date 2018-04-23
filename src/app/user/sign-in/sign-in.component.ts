@@ -13,12 +13,13 @@ import {LoginForm, User} from "../../shared/user.model";
 export class SignInComponent implements OnInit {
 
   isLoginError : boolean = false;
-  email : string = '';
-  password : string  = '';
+  email : string = 'formoned@yahoo.com';
+  password : string  = 'arlasuns';
   user: LoginForm;
   constructor(private userService : UserService,private router : Router) { }
 
   ngOnInit() {
+    console.log('login');
     this.resetForm();
   }
 
@@ -26,19 +27,19 @@ export class SignInComponent implements OnInit {
     if (form != null)
       form.reset();
     this.user = {
-      email: '',
-      password: ''
+      email: 'formoned@yahoo.com',
+      password: 'arlasuns'
     }
   }
 
   OnSubmit(form: NgForm) {
     this.userService.userAuthentication(form.value)
     .subscribe((data: any) => {
-      // console.log(data.json().data.token);
-      localStorage.setItem('token_type', data.json().data.token_type);
-      localStorage.setItem('access_token', data.json().data.access_token);
-      localStorage.setItem('refresh_token', data.json().data.refresh_token);
-      this.router.navigate(['/home']);
+      console.log(data.json().token_type);
+      localStorage.setItem('token_type', data.json().token_type);
+      localStorage.setItem('access_token', data.json().access_token);
+      localStorage.setItem('refresh_token', data.json().refresh_token);
+      this.router.navigate(['/']);
     },
     (err: HttpErrorResponse) => {
       console.log(err);
