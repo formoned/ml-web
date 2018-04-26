@@ -13,10 +13,12 @@ import {LoginForm, User} from "../../shared/user.model";
 export class SignInComponent implements OnInit {
 
   isLoginError : boolean = false;
-  email : string = 'formoned@yahoo.com';
-  password : string  = 'arlasuns';
+  // email : string = 'formoned@yahoo.com';
+  // password : string  = 'arlasuns';
   user: LoginForm;
-  constructor(private userService : UserService,private router : Router) { }
+  constructor(private userService : UserService,private router : Router) {
+    this.user = new LoginForm();
+  }
 
   ngOnInit() {
     console.log('login');
