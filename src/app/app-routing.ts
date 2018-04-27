@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {NgModule, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import {SignInComponent} from "./user/sign-in/sign-in.component";
@@ -52,9 +52,14 @@ export const AppRoutes: Routes = [
   exports: [RouterModule],
   declarations: []
 })
-export class AppRoutingModule {
+export class AppRoutingModule implements OnInit{
 
   constructor() {
     console.log('app routing.ts')
   }
+
+  ngOnInit() {
+    console.log('aasdfasdfasdfsdfasdfasdfasdf');
+  }
+
 }

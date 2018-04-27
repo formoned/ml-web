@@ -31,11 +31,10 @@ export class MyDrawerComponent implements OnInit {
         this.isSidenavCompact = true;
       }
     }
-    ngOnInit(): void {
-        /* ***********************************************************
-        * Use the MyDrawerComponent "onInit" event handler to initialize the properties data values.
-        *************************************************************/
-    }
+  ngOnInit(): void {
+    console.log('bbbbbbbbbbbbbbbbbbbbbb');
+    // this.verifyToken();
+  }
 
     logoutUser() {
         localStorage.removeItem('access_token');

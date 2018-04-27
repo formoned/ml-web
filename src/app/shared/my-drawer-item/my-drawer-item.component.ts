@@ -22,11 +22,10 @@ export class MyDrawerItemComponent implements OnInit {
 
     }
 
-    ngOnInit(): void {
-        /* ***********************************************************
-        * Use the MyDrawerItemComponent "onInit" event handler to initialize the properties data values.
-        *************************************************************/
-    }
+  ngOnInit(): void {
+    console.log('ccccccccccc');
+    // this.verifyToken();
+  }
 
     /* ***********************************************************
     * Use the "tap" event handler of the GridLayout component for handling navigation item taps.

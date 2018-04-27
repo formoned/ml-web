@@ -84,6 +84,12 @@ export class UserService {
     return this.http.post(this.rootUrl + '/oauth/token', body, {headers : reqHeader });
   }
 
+  removeAuthData() {
+    localStorage.removeItem('token_type');
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+  }
+
   getUserClaims(){
     return  this.http.get(this.rootUrl+'/api/GetUserClaims');
   }
