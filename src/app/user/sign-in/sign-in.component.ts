@@ -41,7 +41,7 @@ export class SignInComponent implements OnInit {
       localStorage.setItem('token_type', data.json().token_type);
       localStorage.setItem('access_token', data.json().access_token);
       localStorage.setItem('refresh_token', data.json().refresh_token);
-      this.router.navigate(['/']);
+      this.router.navigate(['']);
     },
     (err: HttpErrorResponse) => {
       console.log(err);

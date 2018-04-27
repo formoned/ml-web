@@ -9,12 +9,11 @@ import {Router} from "@angular/router";
 })
 export class UserComponent implements OnInit {
 
-  constructor(private router : Router) { }
+  constructor(private router : Router) {
+    console.log('ngOnInit');
+  }
 
   ngOnInit() {
-    if (localStorage.getItem('access_token') != null) {
-      this.router.navigate(['/']);
-    }
     console.log('ngOnInit');
   }
 
