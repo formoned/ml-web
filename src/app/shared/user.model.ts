@@ -15,3 +15,10 @@ export class LoginOAuthForm {
   client_secret: string;
   scope: string;
 }
+
+export class UserData {
+  id: string;
+  name: string;
+  email: string;
+  created_at: string;
+}
