@@ -16,6 +16,7 @@ export class MyDrawerItemComponent implements OnInit {
     @Input() icon: string;
     @Input() isSelected: boolean;
 
+
     // constructor(private routerExtensions: RouterExtensions, private router : Router) {
     constructor(private router : Router) {
 
@@ -32,13 +33,13 @@ export class MyDrawerItemComponent implements OnInit {
     * The "tap" event handler of the app drawer item <GridLayout> is used to navigate the app
     * based on the tapped navigationItem's route.
     *************************************************************/
-    // onNavItemTap(navItemRoute: string): void {
-    //     this.routerExtensions.navigate([navItemRoute], {
-    //         transition: {
-    //             name: "fade"
-    //         }
-    //     });
-    // }
+    onNavItemTap(navItemRoute: string): void {
+        // this.routerExtensions.navigate([navItemRoute], {
+        //     transition: {
+        //         name: "fade"
+        //     }
+        // });
+    }
 
     // logoutUser() {
     //     localStorage.removeItem('access_token');

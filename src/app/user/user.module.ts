@@ -24,7 +24,7 @@ export class UserModule implements OnInit {
   public people: Array<any>;
 
   public constructor(private router : Router) {
-    console.log('user.module.ts');
+   console.log('user.module.ts');
   }
 
   public ngOnInit() {}

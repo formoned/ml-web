@@ -20,9 +20,16 @@ export class MyDrawerComponent implements OnInit {
     *************************************************************/
     @Input() selectedPage: string;
 
+    isSidenavCompact: boolean;
 
     constructor(private router : Router) {
+      if(localStorage.getItem('compact-sidenav') != null) {
 
+        this.isSidenavCompact = false;
+      }
+      else {
+        this.isSidenavCompact = true;
+      }
     }
     ngOnInit(): void {
         /* ***********************************************************

@@ -17,7 +17,12 @@ export class SignInComponent implements OnInit {
   // password : string  = 'arlasuns';
   user: LoginForm;
   constructor(private userService : UserService,private router : Router) {
+    if(localStorage.getItem('access_token') != null) {
+      this.router.navigate(['/']);
+    }
+
     this.user = new LoginForm();
+
   }
 
   ngOnInit() {
@@ -41,6 +46,7 @@ export class SignInComponent implements OnInit {
       localStorage.setItem('token_type', data.json().token_type);
       localStorage.setItem('access_token', data.json().access_token);
       localStorage.setItem('refresh_token', data.json().refresh_token);
+      console.log(data.json().access_token);
       this.router.navigate(['']);
     },
     (err: HttpErrorResponse) => {

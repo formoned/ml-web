@@ -18,3 +18,18 @@ export class AuthGuard implements CanActivate {
     return false;
   }
 }
+
+// this.userService.isTokenAvailable(localStorage.getItem('access_token'))
+//   .subscribe((data: any) => {
+//
+//     if(data.json().message == 'Unauthenticated.') {
+//       console.log('nooooooooooooo');
+//       this.router.navigate(['/auth/login']);
+//       return false;
+//     }
+//     else {
+//       console.log('okkkk');
+//       return true;
+//     }
+//
+//   });

@@ -4,17 +4,50 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import {LoginForm, LoginOAuthForm, User} from './user.model';
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Injectable()
 export class UserService {
 
-  readonly rootUrl = 'http://bachelor-server.kods.lv';
+  readonly rootUrl = 'https://bachelor-server.kods.lv';
   readonly clientId = '2';
   readonly clientSecret = '1qMmaxtVnN4q1ZxvkGTZSTDLxWKxHJX5POlU5jGk';
   readonly grantType = 'password';
 
   constructor(private http: Http) { }
   // constructor(private http: HttpClient) { }
+
+  getRequestHeader() {
+    // Without token. Use example for Login request.
+
+
+    var header = new Headers();
+
+    header.append('Accept', 'application/json');
+    header.append('Content-Type', 'application/json');
+    return header;
+  }
+
+  getTokenedHeader() {
+
+    var header = new Headers();
+
+    header.append('Authorization', "Bearer " + localStorage.getItem('access_token'));
+
+    return header;
+  }
+
+  isTokenAvailable(access_token : string) {
+
+    // var header = this.getTokenedHeader();
+    var header = new Headers();
+
+    header.append('Accept', 'application/json');
+    // header.append('Content-Type', 'application/x-www-form-urlencoded');
+    header.append('Authorization', "Bearer " + localStorage.getItem('access_token'));
+
+    return this.http.get(this.rootUrl + '/api/user',{headers : header})
+  }
 
   registerUser(user: User) {
 

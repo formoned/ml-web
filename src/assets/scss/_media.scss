@@ -3,3 +3,32 @@
     height: calc(100vh - 56px);
   }
 }
+
+@media (min-width: 960px) {
+  .compact {
+    span {
+      font-size: 12px;
+    }
+    &.mat-nav-list {
+      .mat-list-item {
+        padding: 9px 0 0;
+        .mat-list-item-content {
+          flex-direction: row;
+          box-sizing: border-box;
+          display: flex;
+          text-align: center;
+          box-sizing: content-box!important;
+          -webkit-box-orient: vertical!important;
+          flex-direction: column!important;
+          height: 42px;
+          padding: 0;
+          .mat-icon {
+            width: 100px!important;
+            padding: 0;
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}

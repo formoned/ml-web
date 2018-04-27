@@ -18,7 +18,7 @@ export const AppRoutes: Routes = [
 
   // { path : "", redirectTo: '/home', pathMatch: "full", canActivate : [AuthGuard]},
   // { path : "login", loadChildren: "./user/user.module#UserModule"},
-  { path : "", loadChildren: "./home/home.module#HomeModule", canActivate : [AuthGuard]},
+  { path : "", loadChildren: "./home/home.module#HomeModule"},
 
 
 

@@ -64,7 +64,6 @@ export class AppModule implements OnInit{
 
   constructor() {
     console.log('App module now');
-
   }
 
   ngOnInit(){

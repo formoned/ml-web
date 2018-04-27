@@ -1,12 +1,18 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-
     <button mat-icon-button (click)="sidenavToggle()">
       <i class="material-icons">menu</i>
     </button>
-    <span>Second Line</span>
-    <span class="example-spacer"></span>
+    <div class="navbar-brand">
+      <img src="/assets/img/ml-logo-unwrap.svg">
+    </div>
 
+
+    <!--<a class="navbar-brand" routerLink="/" inlineSVG="/assets/img/ml-logo.svg"></a>-->
+    <!--<span>Second Line</span>-->
+    <span class="example-spacer"></span>
+    <i class="material-icons">person</i>
+    <span class="user-name"> Artis Lapa</span>
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <i class="material-icons">more_vert</i>
     </button>

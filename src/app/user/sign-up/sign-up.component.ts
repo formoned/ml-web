@@ -19,7 +19,9 @@ export class SignUpComponent implements OnInit {
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
 
   constructor(private userService: UserService,private router: Router) {
-    // this.createForm();
+    if(localStorage.getItem('access_token') != null) {
+      this.router.navigate(['/']);
+    }
   }
 
   ngOnInit() {
