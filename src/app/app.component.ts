@@ -2,18 +2,24 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {UserService} from "./shared/user.service";
 import {Router} from "@angular/router";
 import {HttpErrorResponse} from "@angular/common/http";
+import {SettingsService} from "./home/settings/settings.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [SettingsService]
 })
 export class AppComponent implements OnInit{
 
   title = 'app';
 
-  constructor(private router : Router, private userService : UserService) {
+  constructor(
+    private router : Router,
+    private userService : UserService,
+    private settingService : SettingsService
+  ) {
     console.log('App component constructor');
 
   }

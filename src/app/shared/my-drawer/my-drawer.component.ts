@@ -1,5 +1,6 @@
-import {Component, Input, OnInit, ViewEncapsulation} from "@angular/core";
+import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from "@angular/core";
 import {Router} from "@angular/router";
+import {SettingsService} from "../../home/settings/settings.service";
 // import {alert} from "tns-core-modules/ui/dialogs";
 
 /* ***********************************************************
@@ -19,22 +20,25 @@ export class MyDrawerComponent implements OnInit {
     * You can check how it is used in the "isPageSelected" function below.
     *************************************************************/
     @Input() selectedPage: string;
-
+    @Output() sidenav = new EventEmitter<void>();
     isSidenavCompact: boolean;
 
-    constructor(private router : Router) {
-      if(localStorage.getItem('compact-sidenav') != null) {
+    constructor(private router : Router, private settingService : SettingsService) {
 
-        this.isSidenavCompact = false;
-      }
-      else {
-        this.isSidenavCompact = true;
-      }
+      this.isSidenavCompact = this.settingService.getSideNavCompact();
     }
-  ngOnInit(): void {
-    console.log('bbbbbbbbbbbbbbbbbbbbbb');
-    // this.verifyToken();
-  }
+
+    ngOnInit() {
+      this.settingService.sideNavCompact
+        .subscribe(
+          (compact: boolean) => {
+            console.log('asdasdasdasdasdasdasd');
+            this.sidenav.emit();
+            this.isSidenavCompact = compact;
+            // this.sidenav.emit();
+          }
+        );
+    }
 
     logoutUser() {
         localStorage.removeItem('access_token');

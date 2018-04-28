@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {Router} from "@angular/router";
 import {MatSidenav} from "@angular/material";
+import {Observable} from 'rxjs/Rx';
 
 @Component({
   selector: 'app-home',
@@ -17,8 +18,18 @@ export class HomeComponent implements OnInit {
   ngOnInit() {}
 
   onSidenavToggle() {
-
     this.sidenavEvent.toggle();
+    //   .toggle().then(function (res) {
+    //   console.log(res);
+    // });
+  }
+  onSidenavReToggle() {
+
+    if(this.sidenavEvent.opened) {
+      this.sidenavEvent.toggle();
+      let timer = Observable.timer(400).subscribe(t => this.onSidenavToggle());
+    }
+
   }
 
 }

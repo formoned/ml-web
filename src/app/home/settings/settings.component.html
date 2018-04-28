@@ -1,3 +1,9 @@
-<p>
-  settings works!
-</p>
+<mat-card>
+  <mat-card-title>Settings</mat-card-title>
+  <mat-card-subtitle>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</mat-card-subtitle>
+  <mat-card-content>
+    <div>
+      <mat-slide-toggle (click)="changeSidebarCompact(!checked)" [(ngModel)]="checked">Compact Side-Navigation</mat-slide-toggle>
+    </div>
+  </mat-card-content>
+</mat-card>
