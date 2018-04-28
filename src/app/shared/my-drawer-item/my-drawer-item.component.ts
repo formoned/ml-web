@@ -33,11 +33,9 @@ export class MyDrawerItemComponent implements OnInit {
     * based on the tapped navigationItem's route.
     *************************************************************/
     onNavItemTap(navItemRoute: string): void {
-        // this.routerExtensions.navigate([navItemRoute], {
-        //     transition: {
-        //         name: "fade"
-        //     }
-        // });
+
+      this.router.navigate([navItemRoute]);
+
     }
 
     // logoutUser() {

@@ -18,11 +18,7 @@ import { SignInComponent } from './user/sign-in/sign-in.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { AuthGuard } from "./auth/auth.guard";
 import { AuthInterceptor } from "./auth/auth.interceptor";
-import { LayoutComponent } from './layout/layout.component';
-import { HeaderComponent } from './layout/header/header.component';
-import { SidenavComponent } from './layout/sidenav/sidenav.component';
 import { FormsModule } from "@angular/forms";
-import { ViewsComponent } from './layout/views/views.component';
 import { SharedModule } from "./shared/shared.module";
 import { UserModule } from "./user/user.module";
 import { HomeModule } from "./home/home.module";
@@ -32,11 +28,7 @@ import { HomeModule } from "./home/home.module";
   declarations: [
     AppComponent,
     SignInComponent,
-    SignUpComponent,
-    LayoutComponent,
-    HeaderComponent,
-    SidenavComponent,
-    ViewsComponent
+    SignUpComponent
   ],
   imports: [
     MaterialModule,

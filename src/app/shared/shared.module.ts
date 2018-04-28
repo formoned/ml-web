@@ -7,13 +7,15 @@ import { MyDrawerItemComponent } from "./my-drawer-item/my-drawer-item.component
 import { MyDrawerComponent } from "./my-drawer/my-drawer.component";
 import {ActionBarComponent} from "./action-bar/action-bar.component";
 import {MaterialModule} from "../material.module";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
   imports: [
     // NativeScriptCommonModule,
     // NativeScriptUISideDrawerModule
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    FlexLayoutModule
   ],
   declarations: [
     MyDrawerComponent,

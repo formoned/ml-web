@@ -3,6 +3,12 @@ body {
   height: 100%;
   min-height: 100vh;
   position: relative;
+  .sidenav-content-inner {
+    padding: 0.5rem;
+  }
+  .mat-drawer-content {
+    height: auto;
+  }
 }
 
 .app-inner {

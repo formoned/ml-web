@@ -6,15 +6,21 @@ import {MaterialModule} from "../material.module";
 import {Router} from "@angular/router";
 import {AuthGuard} from "../auth/auth.guard";
 import {UserService} from "../shared/user.service";
+import { HomeIndexComponent } from './home-index/home-index.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   imports: [
     MaterialModule,
     HomeRoutingModule,
-    SharedModule
+    SharedModule,
+    FlexLayoutModule
   ],
   declarations: [
-    HomeComponent
+    HomeComponent,
+    HomeIndexComponent,
+    SettingsComponent
   ],
   providers: [AuthGuard],
   schemas: [

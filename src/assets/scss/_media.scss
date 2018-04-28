@@ -2,6 +2,11 @@
   .app-inner {
     height: calc(100vh - 56px);
   }
+  body {
+    .sidenav-content-inner {
+      height: calc(100vh - 56px);
+    }
+  }
 }
 
 @media (min-width: 960px) {

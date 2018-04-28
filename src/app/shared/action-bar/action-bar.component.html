@@ -17,7 +17,9 @@
     </button>
 
     <i class="material-icons">person</i>
-    <span class="user-name"> {{ userRequest.name }} ( {{ userRequest.email }} )</span>
+
+    <span class="user-name" fxHide.xs> {{ userRequest.name }} ( {{ userRequest.email }} )</span>
+
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <i class="material-icons">more_vert</i>
     </button>
@@ -30,7 +32,7 @@
       <span>Profile</span>
     </button>
 
-    <button mat-menu-item>
+    <button mat-menu-item (click)="navigateTo('/settings')">
       <mat-icon>settings</mat-icon>
       <span>Settings</span>
     </button>

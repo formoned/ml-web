@@ -1,20 +1,20 @@
 // import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 //
-// import { SignInComponent } from './sign-in.component';
+// import { HomeIndexComponent } from './home-index.component';
 //
-// describe('SignInComponent', () => {
-//   let component: SignInComponent;
-//   let fixture: ComponentFixture<SignInComponent>;
+// describe('HomeIndexComponent', () => {
+//   let component: HomeIndexComponent;
+//   let fixture: ComponentFixture<HomeIndexComponent>;
 //
 //   beforeEach(async(() => {
 //     TestBed.configureTestingModule({
-//       declarations: [ SignInComponent ]
+//       declarations: [ HomeIndexComponent ]
 //     })
 //     .compileComponents();
 //   }));
 //
 //   beforeEach(() => {
-//     fixture = TestBed.createComponent(SignInComponent);
+//     fixture = TestBed.createComponent(HomeIndexComponent);
 //     component = fixture.componentInstance;
 //     fixture.detectChanges();
 //   });

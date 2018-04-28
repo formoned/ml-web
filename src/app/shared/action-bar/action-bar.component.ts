@@ -35,6 +35,10 @@ export class ActionBarComponent implements OnInit {
 
   }
 
+  navigateTo(route : string) {
+    this.router.navigate([route]);
+  }
+
   test() {
     console.log('asdasdasdad');
     this.userService.test().subscribe((data: any) => {
