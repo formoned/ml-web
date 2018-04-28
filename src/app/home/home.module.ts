@@ -9,6 +9,7 @@ import {UserService} from "../shared/user.service";
 import { HomeIndexComponent } from './home-index/home-index.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { SettingsComponent } from './settings/settings.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { SettingsComponent } from './settings/settings.component';
   declarations: [
     HomeComponent,
     HomeIndexComponent,
-    SettingsComponent
+    SettingsComponent,
+    ProfileComponent
   ],
   providers: [AuthGuard],
   schemas: [

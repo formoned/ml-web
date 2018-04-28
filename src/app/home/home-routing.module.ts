@@ -5,12 +5,14 @@ import { HomeComponent } from "./home.component";
 import {AuthGuard} from "../auth/auth.guard";
 import {HomeIndexComponent} from "./home-index/home-index.component";
 import {SettingsComponent} from "./settings/settings.component";
+import {UserComponent} from "../user/user.component";
 
 const routes: Routes = [
     {
       path: "", component: HomeComponent, canActivate : [AuthGuard],
       children: [
         { path: '', component: HomeIndexComponent },
+        { path: 'user', component: UserComponent },
         { path: 'settings', component: SettingsComponent }
         ]
     }
