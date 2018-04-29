@@ -60,6 +60,11 @@ body {
   }
 }
 
+.sidedrawer-content {
+  .mat-list-item {
+    padding-right: 20px;
+  }
+}
 .compact {
   span {
     font-size: 12px;

@@ -5,6 +5,7 @@
     <app-my-drawer (sidenav)="onSidenavReToggle($event)"></app-my-drawer>
   </mat-sidenav>
   <mat-sidenav-content>
+    <mat-progress-bar mode="query" color="warn"></mat-progress-bar>
     <div class="sidenav-content-inner">
       <router-outlet></router-outlet>
     </div>

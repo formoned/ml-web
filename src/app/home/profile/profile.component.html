@@ -11,11 +11,18 @@
             <ng-template mat-tab-label>
               <mat-icon>person</mat-icon>
             </ng-template>
-            <div class="tab-content">
-              <!--/-->
-              KEK
-              <!--/-->
-            </div>
+            <mat-tab-body>
+              <div class="tab-content">
+                <form class="tab-content-form">
+                  <mat-form-field>
+                    <input matInput name="name" placeholder="Name" type="text" required>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input matInput name="email" placeholder="Email" type="email" required>
+                  </mat-form-field>
+                </form>
+              </div>
+            </mat-tab-body>
           </mat-tab>
           <mat-tab label="Tab 6">
             <ng-template mat-tab-label>
