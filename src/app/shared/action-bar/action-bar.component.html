@@ -27,7 +27,7 @@
   </mat-toolbar-row>
   <mat-menu #menu="matMenu" yPosition="above" [overlapTrigger]="false">
 
-    <button mat-menu-item>
+    <button mat-menu-item (click)="navigateTo('/profile')">
       <mat-icon>account_box</mat-icon>
       <span>Profile</span>
     </button>

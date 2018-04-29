@@ -1,5 +1,5 @@
 <mat-card-content>
-  <form #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
+  <form #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)" class="anti-bubble-bug">
     <div fxLayout="column">
       <!--/ Auth Form Fields - Begin-->
       <div class="form-components auth-input-field">
@@ -20,12 +20,12 @@ asd
           <input matInput [(ngModel)]="user.password_confirmation" #password_confirmation="ngModel" name="password_confirmation" placeholder="Confirm Password" type="password" required>
         </mat-form-field>
       </div>
-      <button mat-raised-button color="accent" type="submit" [disabled]="!userRegistrationForm.valid">Sign Up</button>
+      <button mat-button type="submit" [disabled]="!userRegistrationForm.valid">Sign Up</button>
       <!--/ Auth Form Fields - End-->
     </div>
   </form>
 </mat-card-content>
-<mat-card-footer class="auth-actions">
+<mat-card-footer class="auth-actions anti-bubble-bug">
   <div class="text-center ">
     <p>Already have Account? <a routerLink='/auth/login'>Sign In</a></p>
   </div>

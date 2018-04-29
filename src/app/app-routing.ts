@@ -41,7 +41,6 @@ export const AppRoutes: Routes = [
   //   children: [{ path: '', component: SignInComponent }]
   // },
   // { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];
 
 @NgModule({

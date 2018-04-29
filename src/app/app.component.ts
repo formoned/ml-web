@@ -32,22 +32,25 @@ export class AppComponent implements OnInit{
 
   verifyToken() {
     console.log('verify token');
-    this.userService.isTokenAvailable(localStorage.getItem('access_token'))
-      .subscribe((data: any) => {
+    if(localStorage.getItem('access_token') != null) {
+      this.userService.isTokenAvailable(localStorage.getItem('access_token'))
+        .subscribe((data: any) => {
 
-        if(data.json().messages == "Unauthenticated.") {
-          console.log('Token has Unauthenticated!')
-          this.userService.removeAuthData();
-          this.router.navigate(['/auth/login']);
-        }
-          console.log('api/user response');
-          console.log(data.json());
-        },
-        (err: HttpErrorResponse) => {
-          console.log('error');
-          this.userService.removeAuthData();
-          this.router.navigate(['/auth/login']);
-        });
+            if(data.json().messages == "Unauthenticated.") {
+              console.log('Token has Unauthenticated!')
+              this.userService.removeAuthData();
+              this.router.navigate(['/auth/login']);
+            }
+            console.log('api/user response');
+            console.log(data.json());
+          },
+          (err: HttpErrorResponse) => {
+            console.log('error');
+            this.userService.removeAuthData();
+            this.router.navigate(['/auth/login']);
+          });
+    }
+
   }
 
 }

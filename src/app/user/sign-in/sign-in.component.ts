@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {UserService} from "../../shared/user.service";
 import {Router} from "@angular/router";
 import {HttpErrorResponse} from "@angular/common/http";
@@ -20,9 +20,7 @@ export class SignInComponent implements OnInit {
     if(localStorage.getItem('access_token') != null) {
       this.router.navigate(['/']);
     }
-
     this.user = new LoginForm();
-
   }
 
   ngOnInit() {

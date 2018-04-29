@@ -7,7 +7,7 @@ body {
     padding: 0.5rem;
   }
   .mat-drawer-content {
-    height: auto;
+    //height: auto;
   }
 }
 
@@ -28,34 +28,33 @@ body {
 }
 .theme {
   .mat-card {
-    //padding: .5rem;
-    margin: .33333333rem;
+    padding: 0;
     border-radius: 2px;
     -webkit-box-shadow: 0 2px 1px -1px rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 1px 3px 0 rgba(0,0,0,.12);
     box-shadow: 0 2px 1px -1px rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 1px 3px 0 rgba(0,0,0,.12);
     color: rgba(0,0,0,.87);
-    //.mat-card-title {
-    //  padding-top: 1rem;
-    //  padding-left: 1rem;
-    //  padding-right: 1rem;
-    //  line-height: 1;
-    //  font-size: 16px;
-    //  font-weight: 400;
-    //}
-    //.mat-card-subtitle {
-    //  padding-left: 1rem;
-    //  padding-right: 1rem;
-    //  line-height: 1;
-    //  font-size: 13px;
-    //}
-    //.mat-card-content {
-    //  padding: 1rem;
-    //  margin-bottom: 0;
-    //  position: relative;
-    //}
+    .mat-card-title {
+      padding-top: 1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      line-height: 1;
+      font-size: 16px;
+      font-weight: 400;
+    }
+    .mat-card-subtitle {
+      padding-left: 1rem;
+      padding-right: 1rem;
+      line-height: 1;
+      font-size: 13px;
+    }
+    .mat-card-content {
+      padding: 1rem;
+      margin-bottom: 0;
+      position: relative;
+    }
     .mat-card-actions {
-      //padding: .5rem 0 !important;
-      //margin: 0 !important;
+      padding: .5rem !important;
+      margin: 0 !important;
 
     }
   }
@@ -84,6 +83,46 @@ body {
           margin: 0;
         }
       }
+    }
+  }
+}
+
+//.tab-group {
+//  border: 1px solid #e8e8e8;
+//}
+
+.mat-card-wrap-centered {
+  flex-flow: row wrap;
+  box-sizing: border-box;
+  display: flex;
+  max-height: 100%;
+  place-content: flex-start center;
+  align-items: flex-start;
+  .wrap-centered-inner {
+    flex: 1 1 100%;
+    box-sizing: border-box;
+    max-width: 55%;
+    padding: 0 0.5rem;
+  }
+  .mat-card-top {
+    margin-top: -64px;
+  }
+}
+
+
+.tab-group {
+  .tab-content {
+    padding: 16px;
+    .tab-content-form {
+      flex-direction: column;
+      box-sizing: border-box;
+      display: flex;
+    }
+    .mat-form-field {
+      width: auto;
+    }
+    > * {
+
     }
   }
 }

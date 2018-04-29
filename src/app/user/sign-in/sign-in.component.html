@@ -1,10 +1,38 @@
 
+<!--<form #loginForm="ngForm" (ngSubmit)="OnSubmit(loginForm)" class="form">-->
+  <!--<div fxLayout="column">-->
+    <!--&lt;!&ndash;/ Auth Form Fields - Begin&ndash;&gt;-->
+    <!--<div class="form-components auth-input-field">-->
+      <!--<mat-form-field>-->
+        <!--<input matInput [(ngModel)]="user.email"  #email="ngModel" name="email" placeholder="E-mail" type="email" required>-->
+      <!--</mat-form-field>-->
+    <!--</div>-->
+    <!--<div class="form-components auth-input-field">-->
+      <!--<mat-form-field>-->
+        <!--<input matInput [(ngModel)]="user.password" #password="ngModel" name="password" placeholder="Password" type="password" required>-->
+      <!--</mat-form-field>-->
+    <!--</div>-->
+    <!--<div class="form-components auth-input-field">-->
+      <!--<mat-checkbox #rememberme name="rememberme">-->
+        <!--Remember me!-->
+      <!--</mat-checkbox>-->
+    <!--</div>-->
+
+    <!--<button mat-raised-button color="accent" type="submit" [disabled]="!loginForm.valid">Login</button>-->
+    <!--&lt;!&ndash;/ Auth Form Fields - End&ndash;&gt;-->
+  <!--</div>-->
+  <!--<div class="text-center ">-->
+    <!--<p>Not registred? <a routerLink='/auth/signup'>Create an account</a></p>-->
+  <!--</div>-->
+<!--</form>-->
+
+
 <mat-card-content>
-  <form #loginForm="ngForm" (ngSubmit)="OnSubmit(loginForm)">
+  <form #loginForm="ngForm" (ngSubmit)="OnSubmit(loginForm)" class="anti-bubble-bug">
     <div fxLayout="column">
       <!--/ Auth Form Fields - Begin-->
       <div class="form-components auth-input-field">
-        <mat-form-field>
+        <mat-form-field  >
           <input matInput [(ngModel)]="user.email"  #email="ngModel" name="email" placeholder="E-mail" type="email" required>
         </mat-form-field>
       </div>
@@ -13,18 +41,18 @@
           <input matInput [(ngModel)]="user.password" #password="ngModel" name="password" placeholder="Password" type="password" required>
         </mat-form-field>
       </div>
-      <div class="form-components auth-input-field">
-        <mat-checkbox #rememberme name="rememberme">
-          Remember me!
-        </mat-checkbox>
-      </div>
+      <!--<div class="form-components auth-input-field">-->
+        <!--<mat-checkbox #rememberme name="rememberme">-->
+          <!--Remember me!-->
+        <!--</mat-checkbox>-->
+      <!--</div>-->
 
-      <button mat-raised-button color="accent" type="submit" [disabled]="!loginForm.valid">Login</button>
+      <button mat-button type="submit" [disabled]="!loginForm.valid">Login</button>
       <!--/ Auth Form Fields - End-->
     </div>
   </form>
 </mat-card-content>
-<mat-card-footer class="auth-actions">
+<mat-card-footer class="auth-actions anti-bubble-bug">
   <div class="text-center ">
     <p>Not registred? <a routerLink='/auth/signup'>Create an account</a></p>
   </div>
