@@ -9,6 +9,7 @@ export class GeoLocationService {
   constructor() { }
 
   public getPosition(): Observable<Position> {
+    console.log('asd');
     return Observable.create(
       (observer) => {
         navigator.geolocation.watchPosition((pos: Position) => {

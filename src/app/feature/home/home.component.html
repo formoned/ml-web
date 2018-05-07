@@ -1,4 +1,4 @@
-<div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutGap="30px">
+<div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutGap="0.5rem">
   <div class="" fxFlex="30">
     <mat-card>
       <mat-card-content fxLayout="column">
@@ -34,9 +34,9 @@
   </div>
   <div class="" fxFlex="70">
     <mat-card>
-      <mat-card-title>
-        Posts location places
-      </mat-card-title>
+      <mat-card-header>
+        <mat-card-title>Posts location places</mat-card-title>
+      </mat-card-header>
       <agm-map
         [latitude]="lat"
         [longitude]="lng"

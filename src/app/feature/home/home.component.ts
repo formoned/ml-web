@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
-import {ApiGetService, AuthenticationService, SideBarService} from "../../core/services";
+import {ApiGetService, AuthenticationService, GeoLocationService, SideBarService} from "../../core/services";
 import {AgmMap} from "@agm/core";
 import {Validators} from "@angular/forms";
 import {Router} from "@angular/router";
@@ -8,6 +8,7 @@ interface marker {
   id: number;
   lat: number;
   lng: number;
+  created_at: string;
   title?: string;
   label?: string;
 }
@@ -55,7 +56,9 @@ export class HomeComponent implements OnInit {
     private sidebar : SideBarService,
     private apiGetService : ApiGetService,
     private authenticationService : AuthenticationService,
-    private router : Router
+    private router : Router,
+    private geoLocationService : GeoLocationService
+
   ) {}
 
   ngOnInit() {
@@ -69,6 +72,20 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  getMyLocation() {
+    this.geoLocationService.getPosition().subscribe(
+      (pos: Position) => {
+        console.log('kek');
+        this.lat = (pos.coords.latitude);
+        this.lng = (pos.coords.longitude);
+        this.agmMap.latitude = (pos.coords.latitude);
+        this.agmMap.longitude = (pos.coords.longitude);
+        console.log(this.agmMap.longitude);
+      },
+      error => {
+        console.log(error);
+      });
+  }
   navigateToPost(id) {
     this.router.navigate(['/posts/'+id]);
   }

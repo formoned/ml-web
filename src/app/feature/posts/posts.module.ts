@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PostsRoutingModule } from './posts-routing.module';
-import {DialogOverviewExampleDialog, PostsComponent} from './posts.component';
+import {PostsComponent} from './posts.component';
 import {MaterialModule} from "../../material.module";
 import {SettingsRoutingModule} from "../settings/settings-routing.module";
 import {ReactiveFormsModule} from "@angular/forms";

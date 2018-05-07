@@ -87,17 +87,7 @@ export class PostsComponent implements OnInit {
     this.buildForm();
     this.loadPosts();
 
-    this.geoLocationService.getPosition().subscribe(
-      (pos: Position) => {
-        this.lat = (pos.coords.latitude);
-        this.lng = (pos.coords.longitude);
-        this.markerLat = (pos.coords.latitude);
-        this.markerLng = (pos.coords.longitude);
-        this.newPost.controls['lat'].setValue((pos.coords.latitude));
-        this.newPost.controls['lng'].setValue((pos.coords.longitude));
-        console.log(this.coordinates);
-      });
-
+    this.getMyLocation();
     this.route.paramMap.subscribe(params => {
       if(params.get('id') == 'new')
       {
@@ -108,6 +98,18 @@ export class PostsComponent implements OnInit {
       }
 
     });
+  }
+
+  getMyLocation() {
+    this.geoLocationService.getPosition().subscribe(
+      (pos: Position) => {
+        this.lat = (pos.coords.latitude);
+        this.lng = (pos.coords.longitude);
+        this.markerLat = (pos.coords.latitude);
+        this.markerLng = (pos.coords.longitude);
+        this.newPost.controls['lat'].setValue((pos.coords.latitude));
+        this.newPost.controls['lng'].setValue((pos.coords.longitude));
+      });
   }
 
   loadPosts() {
