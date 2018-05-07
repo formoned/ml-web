@@ -132,3 +132,35 @@ body {
   }
 }
 
+
+.form-styling {
+  .form-components {
+    margin-bottom: 20px;
+
+    .error-bag {
+      margin-top: -10px;
+      display: block;
+      > * {
+        display: block;
+      }
+    }
+    .mat-form-field {
+      width: 100%;
+    }
+    .mat-form-field-wrapper {
+
+    }
+    .form-radio-button {
+      margin: 5px;
+    }
+  }
+}
+
+agm-map {
+  height: 300px;
+}
+
+.mat-dialog-class {
+  width: 50vw;
+}
+

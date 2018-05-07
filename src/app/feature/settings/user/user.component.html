@@ -1,0 +1,138 @@
+<mat-card>
+  <mat-tab-group #tabgroup class="tab-group" (selectedTabChange)="tabChanged($event)">
+    <mat-tab label="profileEdit">
+      <ng-template mat-tab-label>
+        <mat-icon>person</mat-icon>
+      </ng-template>
+        <div class="tab-content">
+          <form class="tab-content-form form-styling" [formGroup]="profileEdit" (ngSubmit)="OnSubmit(profileEdit)" autocomplete="off">
+
+            <!--/-->
+            <div class="form-components">
+              <mat-form-field>
+                <input matInput [value]="user.name" name="name" placeholder="Name" type="text" formControlName="name">
+              </mat-form-field>
+              <div class="error-bag">
+                <small class="mat-text-warn" *ngFor="let error of FormErrorMessageBag['name']">
+                  {{ error }}
+                </small>
+              </div>
+            </div>
+            <!--/-->
+            <div class="form-components">
+              <mat-form-field>
+                <input matInput [value]="user.title" name="title" placeholder="Title" type="text" formControlName="title">
+              </mat-form-field>
+              <div class="error-bag">
+                <small class="mat-text-warn" *ngFor="let error of FormErrorMessageBag['title']">
+                  {{ error }}
+                </small>
+              </div>
+            </div>
+            <!--/-->
+            <div class="form-components">
+              <label>Gender: </label>
+              <mat-radio-group class="form-radio-group" formControlName="gender" [(ngModel)]="user.gender">
+                <mat-radio-button class="form-radio-button" name="gender" *ngFor="let gender of genders" [value]="gender.key"  >
+                  {{ gender.value }}
+                </mat-radio-button>
+              </mat-radio-group>
+              <div class="error-bag">
+                <small class="mat-text-warn" *ngFor="let error of FormErrorMessageBag['gender']">
+                  {{ error }}
+                </small>
+              </div>
+            </div>
+            <!--/-->
+            <div class="form-components">
+              <mat-form-field>
+
+                <mat-select placeholder="Country" [(ngModel)]="user.country_id" name="country" formControlName="country">
+                  <mat-option>None</mat-option>
+                  <mat-option *ngFor="let country of countries" [value]="country.id">{{country.name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div class="error-bag">
+                <small class="mat-text-warn" *ngFor="let error of FormErrorMessageBag['country']">
+                  {{ error }}
+                </small>
+              </div>
+            </div>
+            <!--/-->
+
+            <div class="form-components">
+              <mat-form-field>
+                <textarea matInput [value]="user.about" name="about" placeholder="About" maxlength="480" formControlName="about"></textarea>
+              </mat-form-field>
+              <div class="error-bag">
+                <small class="mat-text-warn" *ngFor="let error of FormErrorMessageBag['about']">
+                  {{ error }}
+                </small>
+              </div>
+            </div>
+            <!--/-->
+            <div class="form-components">
+              <mat-form-field>
+                <input matInput [value]="user.email" placeholder="Email" type="text" readonly disabled>
+              </mat-form-field>
+            </div>
+            <!--/-->
+            <div class="form-components">
+              <mat-form-field>
+                <input matInput [value]="user.created_at" placeholder="Created at" type="text" readonly disabled>
+              </mat-form-field>
+            </div>
+            <!--/-->
+
+          </form>
+        </div>
+    </mat-tab>
+    <mat-tab label="passwordChange">
+      <ng-template mat-tab-label>
+        <mat-icon>vpn_key</mat-icon>
+      </ng-template>
+        <div class="tab-content">
+          <form class="tab-content-form form-styling" [formGroup]="passwordChange" (ngSubmit)="OnSubmit(passwordChange)">
+            <!--/-->
+            <div class="form-components">
+              <mat-form-field>
+                <input matInput name="password_old" placeholder="Old Password" type="password" formControlName="password_old" required>
+              </mat-form-field>
+              <div class="error-bag">
+                <small class="mat-text-warn" *ngFor="let error of FormErrorMessageBag['password_old']">
+                  {{ error }}
+                </small>
+              </div>
+            </div>
+            <!--/-->
+            <div class="form-components">
+              <mat-form-field>
+                <input matInput  name="password" placeholder="New Password" type="password" formControlName="password" required>
+              </mat-form-field>
+              <div class="error-bag">
+                <small class="mat-text-warn" *ngFor="let error of FormErrorMessageBag['password']">
+                  {{ error }}
+                </small>
+              </div>
+            </div>
+            <!--/-->
+            <div class="form-components">
+              <mat-form-field>
+                <input matInput  name="password_confirmation" placeholder="Confirm New Password" type="password" formControlName="password_confirmation" required>
+              </mat-form-field>
+              <div class="error-bag">
+                <small class="mat-text-warn" *ngFor="let error of FormErrorMessageBag['password_confirmation']">
+                  {{ error }}
+                </small>
+              </div>
+            </div>
+            <!--/-->
+          </form>
+        </div>
+    </mat-tab>
+  </mat-tab-group>
+  <hr>
+  <mat-card-actions>
+    <button mat-button class="shadow-none" (click)="submitTrigger()" [disabled]="!selectedForm.valid">Save</button>
+  </mat-card-actions>
+</mat-card>

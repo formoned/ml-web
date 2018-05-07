@@ -1,0 +1,5 @@
+<mat-nav-list class="sidedrawer-content " [class.compact]="isSidenavCompact">
+  <app-side-bar-item title="Home" route="/" icon="home" [isSelected]="isPageSelected('Home')"></app-side-bar-item>
+  <app-side-bar-item title="Posts" route="/posts" icon="explore" [isSelected]="isPageSelected('Posts')"></app-side-bar-item>
+  <app-side-bar-item title="Settings" route="/settings" icon="settings" [isSelected]="isPageSelected('Settings')"></app-side-bar-item>
+</mat-nav-list>

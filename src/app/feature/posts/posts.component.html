@@ -1,0 +1,151 @@
+<div class="no-sidenav-content-padding">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+
+      <span class="example-spacer"></span>
+
+      <button mat-button (click)="addNewPost()">
+        <i class="material-icons" >add</i> Add new
+      </button>
+
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
+<mat-card>
+  <mat-accordion>
+
+    <mat-expansion-panel expanded="showNewPostForm" *ngIf="showNewPostForm == true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          New Post
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <form class="tab-content-form form-styling" [formGroup]="newPost">
+        <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutGap="30px">
+          <div fxFlex="" >
+            <div fxLayout="column">
+              <!--/-->
+              <div class="form-components">
+                <mat-form-field>
+                  <input matInput name="title" placeholder="Post Title" type="text" formControlName="title" maxlength="60">
+                </mat-form-field>
+                <div class="error-bag">
+                  <small class="mat-text-warn" *ngFor="let error of FormErrorMessageBag['title']">
+                    {{ error }}
+                  </small>
+                </div>
+              </div>
+              <!--/-->
+              <div class="form-components">
+                <mat-form-field class="example-full-width">
+                  <textarea matInput name="description" placeholder="Leave a description" formControlName="description" maxlength="480" ></textarea>
+                </mat-form-field>
+                <div class="error-bag">
+                  <small class="mat-text-warn" *ngFor="let error of FormErrorMessageBag['description']">
+                    {{ error }}
+                  </small>
+                </div>
+              </div>
+              <!--/-->
+            </div>
+          </div>
+          <div fxFlex="">
+            <mat-card >
+              <agm-map
+                [latitude]="lat"
+                [longitude]="lng"
+                [fullscreenControl]="true"
+                (mapClick)="mapClicked($event)">
+
+                <agm-marker
+                  [latitude]="markerLat"
+                  [longitude]="markerLng"
+                  [markerDraggable]="true"
+                  (dragEnd)="markerDrag($event)">
+                </agm-marker>
+
+              </agm-map>
+            </mat-card>
+            <div class="error-bag" *ngIf="(FormErrorMessageBag['lat'] || FormErrorMessageBag['lng'])" >
+              <small class="mat-text-warn">
+                Request Maps marker!
+              </small>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <mat-action-row fxLayout="row" fxLayoutGap="0.5rem">
+        <button mat-raised-button (click)="closeNewPost()">Cancel</button>
+        <button mat-raised-button color="primary" (click)="submitNewPost(newPost)" [disabled]="!newPost.valid" >Save</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel *ngFor="let post of posts" [expanded]="post.id == selectedPost">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ post.title }}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{ post.created_at | date: 'dd. LLLL hh:mm a' }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <form class="tab-content-form form-styling" [formGroup]="post.form">
+        <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutGap="30px">
+          <div fxFlex="">
+            <h1 *ngIf="!post.editable">{{ post.title }}</h1>
+            <div class="form-components" *ngIf="post.editable">
+              <mat-form-field>
+                <input matInput [(ngModel)]="post.title"  name="title" placeholder="Post Title" type="text" maxlength="60" formControlName="title">
+              </mat-form-field>
+              <div class="error-bag">
+                <small class="mat-text-warn" *ngFor="let error of PostsFormErrorMessageBag[post.id + '_title']">
+                  {{ error }}
+                </small>
+              </div>
+            </div>
+            <h2 *ngIf="!post.editable">{{ post.created_at | date: 'dd LLLL hh:mm a' }}</h2>
+            <small *ngIf="!post.editable && post.created_at != post.updated_at">Edited ({{ post.updated_at | date: 'dd LLLL hh:mm a' }})</small>
+            <p *ngIf="!post.editable">{{ post.description }}</p>
+            <div class="form-components" *ngIf="post.editable">
+              <mat-form-field class="example-full-width">
+                <textarea matInput [(ngModel)]="post.description" name="description" placeholder="Leave a description" maxlength="480" formControlName="description"></textarea>
+              </mat-form-field>
+              <div class="error-bag">
+                <small class="mat-text-warn" *ngFor="let error of PostsFormErrorMessageBag[post.id + '_description']">
+                  {{ error }}
+                </small>
+              </div>
+            </div>
+          </div>
+          <div fxFlex="">
+            <mat-card>
+              <agm-map
+                [latitude]="post.map_lat"
+                [longitude]="post.map_lng"
+                [fullscreenControl]="true">
+                <agm-marker
+                  [latitude]="post.lat"
+                  [longitude]="post.lng"
+                  [markerDraggable]="post.draggable"
+                  (dragEnd)="dragedPostEdit($event, post)"
+                ></agm-marker>
+              </agm-map>
+            </mat-card>
+          </div>
+        </div>
+      </form>
+      <mat-action-row fxLayout="row" fxLayoutGap="0.5rem">
+        <!--/ Editable -->
+        <button mat-raised-button (click)="closePostEdit(post)" *ngIf="post.editable">Cancel</button>
+        <button mat-raised-button color="primary" (click)="submitPostEdit(post.form, post)" *ngIf="post.editable" [disabled]="!post.form.valid" >Save</button>
+        <!--/ No - Editable -->
+        <button mat-icon-button color="primary" (click)="openPostEdit(post)" *ngIf="!post.editable"><i class="material-icons">mode_edit</i></button>
+        <button mat-icon-button color="primary" (click)="openDialog(post.id)" *ngIf="!post.editable"><i class="material-icons">delete</i></button>
+        <!--/-->
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+</mat-card>
+

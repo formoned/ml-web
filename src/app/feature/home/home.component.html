@@ -1,0 +1,70 @@
+<div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutGap="30px">
+  <div class="" fxFlex="30">
+    <mat-card>
+      <mat-card-content fxLayout="column">
+        <h1 style="margin-bottom: 0px;">{{ user.name }}</h1>
+
+        <b style="margin-bottom: 0px;" class="mat-text-warn">{{ user.title }}</b>
+        <small class="mt-1">Email: {{ user.email }}</small>
+        <small>Created: {{ user.created_at | date: 'dd. LLLL hh:mm a' }}</small>
+        <small>Gender: {{ user.gender }}</small>
+      </mat-card-content>
+      <hr>
+      <mat-card-content fxLayout="row" class="text-center">
+        <div fxFlex="">
+          <h1 style="margin: 0px;">
+            <b>{{ lastMarker | date: 'dd.LL'  }}</b>
+          </h1>
+          <small>Last Post</small>
+        </div>
+        <div fxFlex="">
+          <h1 style="margin: 0px;">
+            <b>{{ markers.length }}</b>
+          </h1>
+          <small>Posts</small>
+        </div>
+
+      </mat-card-content>
+      <hr>
+      <mat-card-content fxLayout="column">
+        <h4 >About</h4>
+        <p class="mt-0">{{ user.about }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="" fxFlex="70">
+    <mat-card>
+      <mat-card-title>
+        Posts location places
+      </mat-card-title>
+      <agm-map
+        [latitude]="lat"
+        [longitude]="lng"
+        [fullscreenControl]="true">
+        <agm-marker
+          *ngFor="let marker of markers"
+          [latitude]="marker.lat"
+          [longitude]="marker.lng"
+          [label]="marker.label"
+        >
+          <agm-info-window>
+            <div fxLayout="column">
+              {{ marker.title }}
+              <button mat-raised-button (click)="navigateToPost(marker.id)">Show</button>
+            </div>
+          </agm-info-window>
+        </agm-marker>
+        <agm-polyline [editable]="false" [geodesic]="false">
+          <agm-polyline-point *ngFor="let marker of markers"
+            [latitude]="marker.lat"
+            [longitude]="marker.lng">
+          </agm-polyline-point>
+        </agm-polyline>
+      </agm-map>
+      <mat-card-actions>
+        <button mat-icon-button routerLink="/posts" matTooltip="Show all"><i class="material-icons">search</i></button>
+        <button mat-icon-button routerLink="/posts/new" matTooltip="Add now point"><i class="material-icons">add</i></button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

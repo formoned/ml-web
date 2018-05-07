@@ -1,52 +1,25 @@
 import {NgModule, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
-import {SignInComponent} from "./user/sign-in/sign-in.component";
-import {UserComponent} from "./user/user.component";
-import {SignUpComponent} from "./user/sign-up/sign-up.component";
-import {AuthGuard} from "./auth/auth.guard";
-// import {UserComponent} from "./user/user.component";
-// import {SignUpComponent} from "./user/sign-up/sign-up.component";
-// import {SignInComponent} from "./user/sign-in/sign-in.component";
-// import {AuthGuard} from "./auth/auth.guard";
-// import {LayoutComponent} from "./layout/layout.component";
-// import {ViewsComponent} from "./layout/views/views.component";
-// import {HomeComponent} from "./layout/views/home/home.component";
+import {FeatureComponent} from "./feature/feature.component";
+import {NotFoundComponent} from "./core/not-found/not-found.component";
+import {AppComponent} from "./app.component";
+import {AuthGuardService} from "./core/services";
 
 
 export const AppRoutes: Routes = [
-
-  // { path : "", redirectTo: '/home', pathMatch: "full", canActivate : [AuthGuard]},
-  // { path : "login", loadChildren: "./user/user.module#UserModule"},
-  { path : "", loadChildren: "./home/home.module#HomeModule"},
-
-
-
-
-  // { path: "", component: UserComponent, pathMatch: "full", canActivate : [AuthGuard] },
-
-  // {
-  //   path: 'home', component: HomeComponent, canActivate: [AuthGuard]
-  // },
-  // {
-  //   path: '', component: LayoutComponent, canActivate: [AuthGuard],
-  //   children: [{ path: '', component: HomeComponent }]
-  // },
-  // {
-  //   path: 'signup', component: UserComponent,
-  //   children: [{ path: '', component: SignUpComponent }]
-  // },
-  // {
-  //   path: 'login', component: UserComponent,
-  //   children: [{ path: '', component: SignInComponent }]
-  // },
-  // { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  // { path: 'home', loadChildren: "./feature/home/home.module#HomeModule" },
+  { path: '', loadChildren: "./feature/feature.module#FeatureModule", canActivate: [AuthGuardService] },
+  { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot(AppRoutes)
+    RouterModule.forRoot(
+      AppRoutes
+    )
   ],
   exports: [RouterModule],
   declarations: []
@@ -54,11 +27,10 @@ export const AppRoutes: Routes = [
 export class AppRoutingModule implements OnInit{
 
   constructor() {
-    console.log('app routing.ts')
+
   }
 
   ngOnInit() {
-    console.log('aasdfasdfasdfsdfasdfasdfasdf');
   }
 
 }

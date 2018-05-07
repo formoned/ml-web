@@ -1,0 +1,27 @@
+<div class="no-sidenav-content-padding">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row></mat-toolbar-row>
+    <mat-toolbar-row></mat-toolbar-row>
+  </mat-toolbar>
+  <div class="mat-card-wrap-centered" fxlayout="row wrap" fxlayoutalign="center start">
+    <div class="wrap-centered-inner" fxFlex="100" fxFlex.gt-sm="55">
+
+      <mat-card class="mat-card-top">
+        <mat-card-title>Settings</mat-card-title>
+        <mat-card-subtitle>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</mat-card-subtitle>
+        <mat-card-content>
+          <div class="mat-list">
+            <div class="mat-list-item">
+              <a [routerLink]="['/settings/user']">User Information</a>
+            </div>
+            <div class="mat-list-item">
+              <a [routerLink]="['/settings/ui']">User Interface Settings</a>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
