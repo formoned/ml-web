@@ -18,17 +18,13 @@
           Password is required (6 or more characters with at least one number)
         </div>
       </div>
-      <!--<div class="form-components auth-input-field">-->
-      <!--<mat-checkbox #rememberme name="rememberme">-->
-      <!--Remember me!-->
-      <!--</mat-checkbox>-->
-      <!--</div>-->
-
       <button mat-button type="submit" [disabled]="!loginForm.valid">Login</button>
       <!--/ Auth Form Fields - End-->
     </div>
   </form>
 </mat-card-content>
+
+
 <mat-card-footer class="auth-actions anti-bubble-bug">
   <div class="text-center ">
     <p>Not registred? <a routerLink='/auth/register'>Create an account</a></p>

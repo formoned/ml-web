@@ -52,7 +52,6 @@ export class LoginComponent implements OnInit {
             const loginError = 'Unable to login';
             this.errorMessage = loginError;
             console.log(this.errorMessage);
-            // this.growler.growl(loginError, GrowlerMessageType.Danger);
           }
         },
         error => {

@@ -24,7 +24,7 @@ export class AuthenticationService {
 
   login(userLogin: IUserLogin): Observable<boolean> {
 
-    const body: ILoginBody = {
+      const body: ILoginBody = {
       grant_type: this.grantType,
       username: userLogin.email,
       password: userLogin.password,
